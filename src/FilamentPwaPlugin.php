@@ -29,11 +29,20 @@ class FilamentPwaPlugin implements Plugin
     {
         FilamentView::registerRenderHook(
             PanelsRenderHook::HEAD_START,
-            fn (): View => view('filament-pwa::head', [
-                'themeColor' => $this->themeColor,
-                'manifestUrl' => $this->manifestUrl,
-                'appleLinks' => $this->appleHeadLinks(),
-            ]),
+            function (): View {
+                // 'filament-pwa::head' is registered as a package view namespace
+                // at runtime via hasViews(). Larastan analyses the package in
+                // isolation and cannot resolve that namespace, so the literal is
+                // pinned to view-string here to keep static analysis honest.
+                /** @var view-string $view */
+                $view = 'filament-pwa::head';
+
+                return view($view, [
+                    'themeColor' => $this->themeColor,
+                    'manifestUrl' => $this->manifestUrl,
+                    'appleLinks' => $this->appleHeadLinks(),
+                ]);
+            },
         );
     }
 
