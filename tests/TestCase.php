@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Schema;
 use JeffersonGoncalves\Filament\Pwa\FilamentPwaServiceProvider;
 use JeffersonGoncalves\Filament\Pwa\Tests\Fixtures\TestPanelProvider;
 use JeffersonGoncalves\Filament\Pwa\Tests\Fixtures\TestUser;
+use JeffersonGoncalves\PwaFavicon\PwaFaviconServiceProvider;
 use Livewire\LivewireServiceProvider;
 use Livewire\Mechanisms\DataStore;
 use Orchestra\Testbench\TestCase as Orchestra;
@@ -65,6 +66,7 @@ abstract class TestCase extends Orchestra
             InfolistsServiceProvider::class,
             NotificationsServiceProvider::class,
             WidgetsServiceProvider::class,
+            PwaFaviconServiceProvider::class,
             FilamentPwaServiceProvider::class,
             TestPanelProvider::class,
         ];

@@ -10,7 +10,6 @@ class FilamentPwaServiceProvider extends PackageServiceProvider
     public function configurePackage(Package $package): void
     {
         $package
-            ->name('filament-pwa')
-            ->hasViews();
+            ->name('filament-pwa');
     }
 }

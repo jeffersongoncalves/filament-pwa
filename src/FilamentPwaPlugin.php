@@ -7,13 +7,14 @@ use Filament\Panel;
 use Filament\Support\Facades\FilamentView;
 use Filament\View\PanelsRenderHook;
 use Illuminate\Contracts\View\View;
-use JeffersonGoncalves\PwaFavicon\PwaFavicon;
 
 class FilamentPwaPlugin implements Plugin
 {
     protected string $themeColor = '#ffffff';
 
     protected string $manifestUrl = '/manifest.json';
+
+    protected ?string $appTitle = null;
 
     public function getId(): string
     {
@@ -30,17 +31,20 @@ class FilamentPwaPlugin implements Plugin
         FilamentView::registerRenderHook(
             PanelsRenderHook::HEAD_START,
             function (): View {
-                // 'filament-pwa::head' is registered as a package view namespace
-                // at runtime via hasViews(). Larastan analyses the package in
-                // isolation and cannot resolve that namespace, so the literal is
-                // pinned to view-string here to keep static analysis honest.
+                // The complete PWA <head> (icons + apple touch icons + manifest
+                // + msapplication tiles + theme-color + mobile web-app metas) is
+                // rendered by jeffersongoncalves/laravel-pwa-favicon's shared
+                // view, so a panel emits the exact same tags as a public site
+                // layout using the same package. Larastan analyses the package
+                // in isolation and cannot resolve the runtime view namespace,
+                // so the literal is pinned to view-string here.
                 /** @var view-string $view */
-                $view = 'filament-pwa::head';
+                $view = 'pwa-favicon::head';
 
                 return view($view, [
                     'themeColor' => $this->themeColor,
                     'manifestUrl' => $this->manifestUrl,
-                    'appleLinks' => $this->appleHeadLinks(),
+                    'title' => $this->appTitle,
                 ]);
             },
         );
@@ -73,20 +77,10 @@ class FilamentPwaPlugin implements Plugin
         return $this;
     }
 
-    /**
-     * Apple touch icon <link> tags produced by the laravel-pwa-favicon
-     * package. The package is a hard dependency, but the class_exists guard
-     * keeps the <head> injection (manifest link + theme-color) working even
-     * if the favicon routes are not yet published.
-     *
-     * @return array<int, array{rel: string, sizes?: string, href: string, media?: string}>
-     */
-    protected function appleHeadLinks(): array
+    public function appTitle(?string $title): static
     {
-        if (! class_exists(PwaFavicon::class)) {
-            return [];
-        }
+        $this->appTitle = $title;
 
-        return PwaFavicon::appleHeadLinks();
+        return $this;
     }
 }
