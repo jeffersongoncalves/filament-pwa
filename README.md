@@ -1,14 +1,14 @@
 <div class="filament-hidden">
 
-![Filament PWA](https://raw.githubusercontent.com/jeffersongoncalves/filament-pwa/3.x/art/jeffersongoncalves-filament-pwa.png)
+![Filament PWA](https://raw.githubusercontent.com/jeffersongoncalves/filament-pwa/2.x/art/jeffersongoncalves-filament-pwa.png)
 
 </div>
 
 # Filament PWA
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/jeffersongoncalves/filament-pwa.svg?style=flat-square)](https://packagist.org/packages/jeffersongoncalves/filament-pwa)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/jeffersongoncalves/filament-pwa/run-tests.yml?branch=3.x&label=tests&style=flat-square)](https://github.com/jeffersongoncalves/filament-pwa/actions?query=workflow%3Arun-tests+branch%3A3.x)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/jeffersongoncalves/filament-pwa/fix-php-code-style-issues.yml?branch=3.x&label=code%20style&style=flat-square)](https://github.com/jeffersongoncalves/filament-pwa/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3A3.x)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/jeffersongoncalves/filament-pwa/run-tests.yml?branch=2.x&label=tests&style=flat-square)](https://github.com/jeffersongoncalves/filament-pwa/actions?query=workflow%3Arun-tests+branch%3A2.x)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/jeffersongoncalves/filament-pwa/fix-php-code-style-issues.yml?branch=2.x&label=code%20style&style=flat-square)](https://github.com/jeffersongoncalves/filament-pwa/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3A2.x)
 [![Total Downloads](https://img.shields.io/packagist/dt/jeffersongoncalves/filament-pwa.svg?style=flat-square)](https://packagist.org/packages/jeffersongoncalves/filament-pwa)
 [![License](https://img.shields.io/packagist/l/jeffersongoncalves/filament-pwa.svg?style=flat-square)](LICENSE.md)
 
@@ -33,7 +33,7 @@ This plugin is built on top of the [laravel-pwa-favicon](https://github.com/jeff
 You can install the package via composer:
 
 ```bash
-composer require jeffersongoncalves/filament-pwa:^3.0
+composer require jeffersongoncalves/filament-pwa:^2.0
 ```
 
 The `jeffersongoncalves/laravel-pwa-favicon` package is installed as a dependency. Follow its README to publish the favicon assets and enable the manifest/favicon routes — without it the manifest link will point at a route that does not exist.
