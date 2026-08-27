@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.1.0 - 2026-08-27
+
+Update to laravel-pwa-favicon ^2.0 (adds jeffersongoncalves/laravel-favicon as a transitive dependency). No API changes required for filament-pwa consumers.
+
 ## 1.0.2 - 2026-06-20
 
 chore: ignore the .phpunit.cache directory.
