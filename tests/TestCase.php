@@ -17,6 +17,7 @@ use Filament\Widgets\WidgetsServiceProvider;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Schema;
+use JeffersonGoncalves\Favicon\FaviconServiceProvider;
 use JeffersonGoncalves\Filament\Pwa\FilamentPwaServiceProvider;
 use JeffersonGoncalves\Filament\Pwa\Tests\Fixtures\TestPanelProvider;
 use JeffersonGoncalves\Filament\Pwa\Tests\Fixtures\TestUser;
@@ -66,6 +67,7 @@ abstract class TestCase extends Orchestra
             InfolistsServiceProvider::class,
             NotificationsServiceProvider::class,
             WidgetsServiceProvider::class,
+            FaviconServiceProvider::class,
             PwaFaviconServiceProvider::class,
             FilamentPwaServiceProvider::class,
             TestPanelProvider::class,
