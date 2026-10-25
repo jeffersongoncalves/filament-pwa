@@ -66,6 +66,13 @@ FilamentPwaPlugin::make()
     ->manifestUrl('/manifest.json'), // <link rel="manifest"> href, defaults to /manifest.json
 ```
 
+`themeColor()` also accepts a Closure, evaluated each time the `<head>` renders. Use it for per-request values, which is required under Laravel Octane where the panel is registered once per worker:
+
+```php
+FilamentPwaPlugin::make()
+    ->themeColor(fn (): string => request()->cookie('theme') === 'light' ? '#fffef9' : '#0b0a09');
+```
+
 The render hook is scoped to the panel it is registered on, so you can enable the PWA `<head>` markup per panel.
 
 ## Testing
