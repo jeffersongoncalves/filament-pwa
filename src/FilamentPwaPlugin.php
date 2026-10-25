@@ -2,15 +2,19 @@
 
 namespace JeffersonGoncalves\Filament\Pwa;
 
+use Closure;
 use Filament\Contracts\Plugin;
 use Filament\Panel;
+use Filament\Support\Concerns\EvaluatesClosures;
 use Filament\Support\Facades\FilamentView;
 use Filament\View\PanelsRenderHook;
 use Illuminate\Contracts\View\View;
 
 class FilamentPwaPlugin implements Plugin
 {
-    protected string $themeColor = '#ffffff';
+    use EvaluatesClosures;
+
+    protected string|Closure $themeColor = '#ffffff';
 
     protected string $manifestUrl = '/manifest.json';
 
@@ -42,7 +46,7 @@ class FilamentPwaPlugin implements Plugin
                 $view = 'pwa-favicon::head';
 
                 return view($view, [
-                    'themeColor' => $this->themeColor,
+                    'themeColor' => $this->getThemeColor(),
                     'manifestUrl' => $this->manifestUrl,
                     'title' => $this->appTitle,
                 ]);
@@ -63,11 +67,18 @@ class FilamentPwaPlugin implements Plugin
         return $plugin;
     }
 
-    public function themeColor(string $color): static
+    public function themeColor(string|Closure $color): static
     {
         $this->themeColor = $color;
 
         return $this;
+    }
+
+    public function getThemeColor(): string
+    {
+        // Evaluated when the head renders, not at panel registration, so a
+        // Closure stays per-request under Octane's long-lived workers.
+        return $this->evaluate($this->themeColor);
     }
 
     public function manifestUrl(string $url): static
