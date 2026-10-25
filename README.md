@@ -68,7 +68,7 @@ FilamentPwaPlugin::make()
 
 ```php
 FilamentPwaPlugin::make()
-    ->themeColor(fn (): string => request()->cookie('theme') === 'light' ? '#fffef9' : '#0b0a09'),
+    ->themeColor(fn (): string => request()->cookie('theme') === 'light' ? '#fffef9' : '#0b0a09');
 ```
 
 The render hook is scoped to the panel it is registered on, so you can enable the PWA `<head>` markup per panel.
