@@ -28,7 +28,7 @@
     "require-dev": {
         "larastan/larastan": "^2.0|^3.0",
         "laravel/pint": "^1.0",
-        "orchestra/testbench": "^8.0|^9.0",
+        "orchestra/testbench": "^11.3.0",
         "pestphp/pest": "^2.0|^3.0"
     },
     "autoload": {
